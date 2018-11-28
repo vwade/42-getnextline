@@ -6,7 +6,7 @@
 /*   By: viwade <viwade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 21:04:41 by viwade            #+#    #+#             */
-/*   Updated: 2018/11/26 17:57:54 by viwade           ###   ########.fr       */
+/*   Updated: 2018/11/28 05:05:20 by viwade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 typedef struct	s_file
 {
-	int		ndx;
+	size_t	ndx;
+	size_t	len;
 	char	*str;
-	int		len;
 }				t_file;
 
 int				get_next_line(const int fd, char **line);
