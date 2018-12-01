@@ -6,7 +6,7 @@
 /*   By: viwade <viwade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 21:04:41 by viwade            #+#    #+#             */
-/*   Updated: 2018/11/27 15:06:57 by viwade           ###   ########.fr       */
+/*   Updated: 2018/11/30 18:08:22 by viwade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static int
 		file->len = ft_strlen(&file->str[file->ndx]);
 	line[0] = ft_strsub(file->str, file->ndx, file->len);
 	file->ndx += (tmp) ? file->len + 1 : file->len;
-	ft_putstr("\nft_strlen(file->str) vs file->ndx : "); ft_putnbr(ft_strlen(file->str)); ft_putstr(" : "); ft_putnbr(file->ndx); ft_putendl("");
-	return (!(file->ndx >= ft_strlen(file->str)));
+	//ft_putstr("\nft_strlen(file->str) vs file->ndx : "); ft_putnbr(ft_strlen(file->str)); ft_putstr(" : "); ft_putnbr(file->ndx); ft_putendl("");
+	return (!!tmp);
 }
 
 /*
@@ -47,8 +47,11 @@ int
 	get_next_line(const int fd, char **line)
 {
 	static t_file	file[FD_LIMIT];
-
+	int				ret;
+	
+	ret = 0;
 	if (fd < 0 || fd > FD_LIMIT - 1 || !line || read(fd, 0, 0) == -1)
 		return (-1);
-	return (readline(&file[fd], fd, line));
+	ret = readline(&file[fd], fd, line);
+	return (ret);
 }
