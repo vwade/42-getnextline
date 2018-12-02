@@ -6,7 +6,7 @@
 /*   By: viwade <viwade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 21:04:41 by viwade            #+#    #+#             */
-/*   Updated: 2018/12/01 19:27:54 by viwade           ###   ########.fr       */
+/*   Updated: 2018/12/01 19:37:12 by viwade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int
 	get_next_line(const int fd, char **line)
 {
 	static t_file	file[FD_LIMIT];
-	
+
 	if (fd < 0 || fd > FD_LIMIT - 1 || !line || read(fd, 0, 0) == -1)
 		return (-1);
 	return (readline(&file[fd], fd, line));
