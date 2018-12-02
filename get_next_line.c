@@ -6,7 +6,7 @@
 /*   By: viwade <viwade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 21:04:41 by viwade            #+#    #+#             */
-/*   Updated: 2018/12/01 19:37:12 by viwade           ###   ########.fr       */
+/*   Updated: 2018/12/01 19:55:54 by viwade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ static int
 	return (ret);
 }
 
-/*
-**	COMMENTS MAY GO HERE
-*/
-
 int
 	get_next_line(const int fd, char **line)
 {
@@ -51,3 +47,23 @@ int
 		return (-1);
 	return (readline(&file[fd], fd, line));
 }
+
+/*
+**	COMMENTS MAY GO HERE
+**	FUNCTION: GET_NEXT_LINE
+**	First phase.
+**	Set up static array to hold all possible file descriptors.
+**	I have elected to use a struct to hold a string, index, and length of line.
+**	Defined with macro. FD_LIMIT
+**	Error check. Ensure fd is valid, that 'line' is valid, and fd can be read.
+**	All checks pass. Return value of 'readline.'
+**
+**	Second phase.
+**	Initialize string, if invalid.
+**	Read contents of file by joining data buffer to the end of my file string.
+**	Loop and free excess data each cycle.
+**	Search for next newline char. Assign a marker.
+**	Obtain length of line using 'newline' marker and current file index.
+**	Else get length of remainder of data in file. (Null-terminate)
+**	File index updates last. If index is null, return 0. Else return 1.
+*/
