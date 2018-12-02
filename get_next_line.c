@@ -6,7 +6,7 @@
 /*   By: viwade <viwade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 21:04:41 by viwade            #+#    #+#             */
-/*   Updated: 2018/12/01 18:28:13 by viwade           ###   ########.fr       */
+/*   Updated: 2018/12/01 19:27:54 by viwade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int
 	readline(t_file *file, int fd, char **line)
 {
+	int			ret;
 	long int	nb;
 	char		buf[BUFF_SIZE + 1];
 	char		*tmp;
@@ -32,8 +33,9 @@ static int
 	else
 		file->len = ft_strlen(&file->str[file->ndx]);
 	line[0] = ft_strsub(file->str, (unsigned int)file->ndx, file->len);
+	ret = !!(file->str[file->ndx]);
 	file->ndx += (tmp) ? file->len + 1 : file->len;
-	return (!!tmp);
+	return (ret);
 }
 
 /*
