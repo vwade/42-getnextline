@@ -6,7 +6,7 @@
 /*   By: viwade <viwade@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/18 21:04:41 by viwade            #+#    #+#             */
-/*   Updated: 2018/12/01 19:55:54 by viwade           ###   ########.fr       */
+/*   Updated: 2018/12/03 00:09:58 by viwade           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static int
 		file->len = (size_t)(tmp - &file->str[file->ndx]);
 	else
 		file->len = ft_strlen(&file->str[file->ndx]);
-	line[0] = ft_strsub(file->str, (unsigned int)file->ndx, file->len);
-	ret = !!(file->str[file->ndx]);
+	if ((ret = !!(file->str[file->ndx])))
+		line[0] = ft_strsub(file->str, (unsigned int)file->ndx, file->len);
 	file->ndx += (tmp) ? file->len + 1 : file->len;
 	return (ret);
 }
@@ -53,8 +53,8 @@ int
 **	FUNCTION: GET_NEXT_LINE
 **	First phase.
 **	Set up static array to hold all possible file descriptors.
-**	I have elected to use a struct to hold a string, index, and length of line.
 **	Defined with macro. FD_LIMIT
+**	I have elected to use a struct to hold a string, index, and length of line.
 **	Error check. Ensure fd is valid, that 'line' is valid, and fd can be read.
 **	All checks pass. Return value of 'readline.'
 **
@@ -65,5 +65,5 @@ int
 **	Search for next newline char. Assign a marker.
 **	Obtain length of line using 'newline' marker and current file index.
 **	Else get length of remainder of data in file. (Null-terminate)
-**	File index updates last. If index is null, return 0. Else return 1.
+**	File index updates last. If char at index is null, return 0. Else return 1.
 */
